@@ -15,7 +15,7 @@
           <p class="name">{{ user.name }}</p>
           <p class="company">company : {{ user.company.name }}</p>
         </div>
-        <span>View profile</span>
+        <span v-on:click="viewProfile(user.id)">View profile</span>
       </div>
     </div>
   </div>
@@ -47,6 +47,11 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/users')
       .then(response => (this.users = response.data))
+  },
+  methods: {
+    viewProfile: function (id) {
+      console.log(id)
+    }
   }
 }
 let images = document.querySelectorAll('img')
