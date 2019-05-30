@@ -9,7 +9,7 @@
       >
         <div class="background"></div>
         <div class="picture">
-          <img v-bind:src="image[Math.floor(Math.random() * (8 - 0 + 0)) + 0]" alt="profile picture">
+          <img v-bind:src="image[user.id - 1]" alt="profile picture">
         </div>
         <div class="infos">
           <p class="name">{{ user.name }}</p>
@@ -38,7 +38,8 @@ export default {
         require('@/assets/photos/6.png'),
         require('@/assets/photos/7.png'),
         require('@/assets/photos/8.png'),
-        require('@/assets/photos/9.png')
+        require('@/assets/photos/9.png'),
+        require('@/assets/photos/10.png')
       ]
     }
   },
