@@ -20,8 +20,6 @@
         </div>
       </div>
     </div>
-    <p>{{ user }}</p>
-    {{ viewProfile() }}
   </div>
 </template>
 
@@ -31,7 +29,29 @@ export default {
   name: 'User',
   data () {
     return {
-      user: null,
+      user: {
+        'id': null,
+        'name': '',
+        'username': '',
+        'email': '',
+        'address': {
+          'street': '',
+          'suite': '',
+          'city': '',
+          'zipcode': '',
+          'geo': {
+            'lat': '',
+            'lng': ''
+          }
+        },
+        'phone': '',
+        'website': '',
+        'company': {
+          'name': '',
+          'catchPhrase': '',
+          'bs': ''
+        }
+      },
       image: [
         require('@/assets/photos/1.png'),
         require('@/assets/photos/2.png'),
@@ -47,9 +67,6 @@ export default {
     }
   },
   methods: {
-    viewProfile: function () {
-      console.log(this.$router.history.current.params)
-    }
   },
   mounted () {
     axios
