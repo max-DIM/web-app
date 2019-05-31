@@ -22,4 +22,7 @@ export default {
 body {
   margin: 0;
 }
+* {
+  z-index: 0;
+}
 </style>

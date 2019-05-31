@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loader v-if="loading"></loader>
     <div class="profile">
       <div class="banner"></div>
       <div class="picture">
@@ -25,8 +26,12 @@
 
 <script>
 import axios from 'axios'
+import Loader from '@/components/Loader'
 export default {
   name: 'User',
+  components: {
+    Loader
+  },
   data () {
     return {
       user: {
@@ -63,15 +68,20 @@ export default {
         require('@/assets/photos/8.png'),
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
-      ]
+      ],
+      loading: true
     }
   },
   methods: {
+    stopLoader: function () {
+      this.loading = false
+    }
   },
   mounted () {
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.$router.history.current.params.id)
       .then(response => (this.user = response.data))
+      .then(response => this.stopLoader())
   }
 }
 </script>

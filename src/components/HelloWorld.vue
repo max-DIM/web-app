@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <loader v-if="loading"></loader>
     <h1>{{ msg }}</h1>
     <div class="users">
       <div class="user"
@@ -22,9 +23,13 @@
 </template>
 
 <script>
+import Loader from '@/components/Loader'
 import axios from 'axios'
 export default {
   name: 'HelloWorld',
+  components: {
+    Loader
+  },
   data () {
     return {
       msg: 'List of users of the photo application',
@@ -40,18 +45,23 @@ export default {
         require('@/assets/photos/8.png'),
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
-      ]
+      ],
+      loading: true
     }
   },
   mounted () {
     axios
       .get('https://jsonplaceholder.typicode.com/users')
       .then(response => (this.users = response.data))
+      .then(response => this.stopLoader())
   },
   methods: {
     viewProfile: function (id) {
       // console.log(id)
       this.$router.push(`user/${id}`)
+    },
+    stopLoader: function () {
+      this.loading = false
     }
   }
 }
