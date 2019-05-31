@@ -12,17 +12,16 @@
           <p>Email : {{ user.email }}</p>
           <p>Phone : {{ user.phone }}</p>
           <p>Website : <span class="website">{{ user.website }}</span></p>
-          <p>Company : <strong>{{ user.company.name }}</strong>, {{ user.company.catchPhrase }}, {{ user.company.bs }}</p>
+          <p>Company : <strong>{{ user.company.name }}</strong>, <br>{{ user.company.catchPhrase }}, <br>{{ user.company.bs }}</p>
         </div>
         <div class="right">
           <div class="include-maps">
-            <p>maps</p>
           </div>
         </div>
       </div>
     </div>
     <p>{{ user }}</p>
-    {{ viewProfil() }}
+    {{ viewProfile() }}
   </div>
 </template>
 
@@ -47,14 +46,9 @@ export default {
       ]
     }
   },
-  props: {
-    id: {
-      type: [Number, String]
-    }
-  },
   methods: {
-    viewProfil: function () {
-      console.log(this.$router.history.current.params.id)
+    viewProfile: function () {
+      console.log(this.$router.history.current.params)
     }
   },
   mounted () {
@@ -79,7 +73,7 @@ export default {
 }
 .infos {
   width: calc(100% - 40px);
-  padding: 40px 20px 0 20px;
+  padding: 0 20px 0 20px;
 }
 h1, h2, p {
  text-align: left;
@@ -103,8 +97,10 @@ h1 {
   max-width: 100%;
 }
 .left, .right {
-  width: 50%;
   float: left;
+}
+.left {
+  padding-top: 40px;
 }
 .website {
   color: rgba(52, 73, 94, .8);
@@ -112,6 +108,6 @@ h1 {
   cursor: pointer;
 }
 .include-maps {
-  margin: 5px;
+  margin: 2px;
 }
 </style>
