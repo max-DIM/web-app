@@ -15,7 +15,7 @@
           <p class="name">{{ user.name }}</p>
           <p class="company">company : {{ user.company.name }}</p>
         </div>
-        <span v-on:click="viewProfile(user.id)">View profile</span>
+        <a v-on:click="viewProfile(user.id)">View profile</a>
       </div>
     </div>
   </div>
@@ -54,11 +54,6 @@ export default {
     }
   }
 }
-let images = document.querySelectorAll('img')
-images.forEach(function (img) {
-  let random = '../assets/photos/' + Math.ceil(Math.random() * 8.99) + '.png'
-  img.src = random
-})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -82,7 +77,7 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-span {
+a {
   background: #34495e;
   padding: 10px 20px;
   border-radius: 4px;
@@ -90,7 +85,7 @@ span {
   transition: 0.3s;
   cursor: pointer;
 }
-span:hover {
+a:hover {
   background: rgba(52, 73, 94, .8);
 }
 img {
