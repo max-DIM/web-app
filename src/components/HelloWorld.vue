@@ -50,7 +50,8 @@ export default {
   },
   methods: {
     viewProfile: function (id) {
-      console.log(id)
+      // console.log(id)
+      this.$router.push(`user/${id}`)
     }
   }
 }

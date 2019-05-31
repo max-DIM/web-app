@@ -5,9 +5,9 @@
     </div>
     <nav class="menu">
       <a href="">Home</a>
-      <a href="">Home</a>
-      <a href="">Home</a>
-      <a href="">Home</a>
+      <a href="">Pictures</a>
+      <a href="">Albums</a>
+      <a href="">Maps</a>
     </nav>
   </header>
 </template>
