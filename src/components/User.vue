@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  z-index: 1;
+}
 .profile {
   border: 1px solid rgba(0,0,0,.3);
   margin: 15px;
@@ -117,6 +120,9 @@ h2, p {
 }
 h1 {
   margin-bottom: 0;
+}
+nav {
+  z-index: 100;
 }
 .picture {
   width: 200px;

@@ -45,6 +45,7 @@ header {
   color: white;
   background: #34495e;
   line-height: 66px;
+  z-index: 100;
 }
 a {
   text-decoration: none;
@@ -121,20 +122,29 @@ a:hover {
 }
 @media only screen and (max-width: 750px) {
   .menu a {
-    /*display: none;*/
-    position: static;
-    width: calc(100% - 30px);
+    display: none;
+    position: absolute;
+    padding: 0;
+    width: 100%;
     top: 66px;
     left: 0;
+    z-index: 100;
   }
-  .menu a:nth-child(2) {
-
+  .menu.show a {
+    display: block;
   }
-  .menu a:nth-child(2) {
-
+  .menu.show a:nth-child(2) {
+    transition: ;
+    top: calc(66px * 2);
+    z-index: calc(100 - 2);
   }
-  .menu a:nth-child(2) {
-
+  .menu.show a:nth-child(3) {
+    top: calc(66px * 3);
+    z-index: calc(100 - 3);
+  }
+  .menu.show a:nth-child(4) {
+    top: calc(66px * 4);
+    z-index: calc(100 - 4);
   }
 }
 @media only screen and (min-width: 750px) {
