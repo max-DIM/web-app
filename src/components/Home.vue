@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <loader v-if="loading"></loader>
     <h1>{{ msg }}</h1>
     <div class="users">
@@ -26,7 +26,7 @@
 import Loader from '@/components/Loader'
 import axios from 'axios'
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   components: {
     Loader
   },
