@@ -3,7 +3,8 @@
     <l-map
       :zoom="zoom"
       :center="latLng(user.address.geo.lat, user.address.geo.lng)"
-      :style="mapSize()">
+      style="height: 300.44px"
+    >
       <l-tile-layer
         :url="url"
         :attribution="attribution"
@@ -43,10 +44,6 @@ export default {
     latLng: function (lat, lng) {
       // eslint-disable-next-line no-undef
       return L.latLng(lat, lng)
-    },
-    mapSize: function () {
-      console.log('mapSize')
-      return 'height: 200px; width: 200px'
     }
   }
 }

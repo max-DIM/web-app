@@ -14,11 +14,13 @@
           <p>Phone : {{ user.phone }}</p>
           <p>Website : <span class="website">{{ user.website }}</span></p>
           <p>Company : <strong>{{ user.company.name }}</strong>, <br>{{ user.company.catchPhrase }}, <br>{{ user.company.bs }}</p>
+          <hr style="border-top: 1px dotted #8c8b8b;">
+          <p>
+            Address : {{user.address.street}}, {{user.address.city}}, {{user.address.zipcode}}
+          </p>
         </div>
         <div class="right">
-          <div class="include-maps">
-            <Map :user="user"></Map>
-          </div>
+          <Map :user="user"></Map>
         </div>
       </div>
     </div>
@@ -84,6 +86,7 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.$router.history.current.params.id)
       .then(response => (this.user = response.data))
+      .then(response => console.log(response))
       .then(response => this.stopLoader())
   }
 }
@@ -126,18 +129,42 @@ h1 {
 .picture img {
   max-width: 100%;
 }
-.left, .right {
-  float: left;
-}
 .left {
+  width: 363px;
+  float:left;
+  margin-right: -185px;
+  height:100%;
+}
+.right {
+  margin-left: 370px;
+  padding-bottom: 5px;
+}
+.infos {
   padding-top: 40px;
+  position: relative;
+  /*display: flex;*/
+}
+@media (max-width: 749px) {
+  .infos,
+  .left,
+  .right {
+    display: block;
+    position: static;
+  }
+  .left {
+    float: none;
+    width: 100%;
+  }
+  .left * {
+    text-align: center;
+  }
+  .right {
+    margin: 0 0 5px 0;
+  }
 }
 .website {
   color: rgba(52, 73, 94, .8);
   text-decoration: underline;
   cursor: pointer;
-}
-.include-maps {
-  margin: 2px;
 }
 </style>
