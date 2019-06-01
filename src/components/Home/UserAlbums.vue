@@ -2,8 +2,8 @@
   <div>
     <div>
       <h2>My Albums</h2>
-      <ul :key="index" v-for="(album, index) in albums">
-        <li v-on:click="go(album.id, index)">
+      <ul>
+        <li :key="index" v-for="(album, index) in albums" v-on:click="go(album.id, index)">
           <h3>Album n°{{index + 1}}</h3>
           <p>{{album.title}}</p>
         </li>
@@ -43,12 +43,13 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
 li {
   overflow: auto;
-  float: left;
-  width: 50%;
   transition: all .3s;
 }
 
