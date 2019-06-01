@@ -2,12 +2,21 @@
   <div id="app">
     <navbar></navbar>
     <router-view/>
+    <div id="footer">
+      Maxime Girard @ {{getFullYear()}}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    getFullYear: function () {
+      let d = new Date()
+      return d.getFullYear()
+    }
+  }
 }
 </script>
 
@@ -24,5 +33,15 @@ body {
 }
 * {
   z-index: 0;
+}
+#footer {
+  font-size: 12px;
+  left: 0;
+  right: 0;
+  height: 66px;
+  color: white;
+  background: #34495e;
+  line-height: 66px;
+  z-index: 100;
 }
 </style>

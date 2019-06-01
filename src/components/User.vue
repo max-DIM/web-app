@@ -24,6 +24,9 @@
         </div>
       </div>
     </div>
+    <div class="albums">
+      <UserAlbums :user="user"></UserAlbums>
+    </div>
   </div>
 </template>
 
@@ -31,11 +34,13 @@
 import axios from 'axios'
 import Loader from '@/components/Loader'
 import Map from '@/components/Map'
+import UserAlbums from '@/components/UserAlbums'
 export default {
   name: 'User',
   components: {
     Loader,
-    Map
+    Map,
+    UserAlbums
   },
   data () {
     return {
@@ -86,7 +91,6 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.$router.history.current.params.id)
       .then(response => (this.user = response.data))
-      .then(response => console.log(response))
       .then(response => this.stopLoader())
   }
 }
@@ -96,11 +100,15 @@ export default {
 * {
   z-index: 1;
 }
-.profile {
+.profile, .albums {
   border: 1px solid rgba(0,0,0,.3);
-  margin: 15px;
+  margin: 15px 15px 0;
   width: calc(100% - 100px);
   display: inline-block;
+}
+.albums {
+  border: none;
+  margin-top: 0;
 }
 .banner {
   background: rgba(52, 73, 94, .3);

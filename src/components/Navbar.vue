@@ -134,7 +134,6 @@ a:hover {
     display: block;
   }
   .menu.show a:nth-child(2) {
-    transition: ;
     top: calc(66px * 2);
     z-index: calc(100 - 2);
   }
