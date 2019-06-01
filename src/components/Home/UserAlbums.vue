@@ -3,7 +3,7 @@
     <div>
       <h2>My Albums</h2>
       <ul :key="index" v-for="(album, index) in albums">
-        <li v-on:click="go(album.id)">
+        <li v-on:click="go(album.id, index)">
           <h3>Album n°{{index + 1}}</h3>
           <p>{{album.title}}</p>
         </li>
@@ -30,8 +30,9 @@ export default {
       .then(response => (this.albums = response.data))
   },
   methods: {
-    go: function (id) {
-      this.$router.push(`album/${id}`)
+    go: function (id, index) {
+      index++
+      this.$router.push(`${this.$router.history.current.params.id}/album/${index}/${id}`)
     }
   }
 }

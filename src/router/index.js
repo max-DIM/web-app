@@ -22,7 +22,7 @@ export default new Router({
       component: User
     },
     {
-      path: '/user/album/:id',
+      path: '/user/:userid/album/:index/:albumid',
       name: 'userAlbumView',
       component: Album
     },
