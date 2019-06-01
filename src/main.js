@@ -5,8 +5,8 @@ import 'leaflet/dist/leaflet.css'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Navbar from './components/Navbar'
-import Loader from './components/Loader'
+import Navbar from './components/Utils/Navbar'
+import Loader from './components/Utils/Loader'
 
 Vue.config.productionTip = false
 

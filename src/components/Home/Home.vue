@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Loader from '@/components/Loader'
+import Loader from '@/components/Utils/Loader'
 import axios from 'axios'
 export default {
   name: 'Home',

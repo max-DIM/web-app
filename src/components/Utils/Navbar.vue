@@ -5,9 +5,9 @@
     </div>
     <nav class="menu">
       <a href="">Home</a>
-      <a href="">Pictures</a>
-      <a href="">Albums</a>
-      <a href="">Maps</a>
+      <a v-on:click="go('pictures')">Pictures</a>
+      <a v-on:click="go('albums')">Albums</a>
+      <a v-on:click="go('maps')">Maps</a>
     </nav>
   </header>
 </template>
@@ -28,6 +28,9 @@ export default {
       } else {
         document.querySelector('.menu').classList.remove('show')
       }
+    },
+    go: function (e) {
+      this.$router.push(e)
     }
   }
 }

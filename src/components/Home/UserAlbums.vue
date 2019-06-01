@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     go: function (id) {
-      console.log(id)
+      this.$router.push(`album/${id}`)
     }
   }
 }

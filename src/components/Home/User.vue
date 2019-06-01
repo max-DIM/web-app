@@ -32,9 +32,9 @@
 
 <script>
 import axios from 'axios'
-import Loader from '@/components/Loader'
-import Map from '@/components/Map'
-import UserAlbums from '@/components/UserAlbums'
+import Loader from '@/components/Utils/Loader'
+import Map from '@/components/Home/Map'
+import UserAlbums from '@/components/Home/UserAlbums'
 export default {
   name: 'User',
   components: {
