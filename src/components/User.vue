@@ -17,6 +17,7 @@
         </div>
         <div class="right">
           <div class="include-maps">
+            <Map :user="user"></Map>
           </div>
         </div>
       </div>
@@ -27,10 +28,12 @@
 <script>
 import axios from 'axios'
 import Loader from '@/components/Loader'
+import Map from '@/components/Map'
 export default {
   name: 'User',
   components: {
-    Loader
+    Loader,
+    Map
   },
   data () {
     return {
