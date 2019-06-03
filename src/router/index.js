@@ -6,6 +6,7 @@ import Albums from '@/components/Albums/Albums'
 import Pictures from '@/components/Pictures/Pictures'
 import Maps from '@/components/Maps/Maps'
 import Album from '@/components/Home/Album'
+import Picture from '@/components/Home/Picture'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/user/:userid/album/:index/:albumid',
       name: 'userAlbumView',
       component: Album
+    },
+    {
+      path: '/user/:userid/album/:index/:albumid/picture/:pictureid/',
+      name: 'pictureAlbumView',
+      component: Picture
     },
     {
       path: '/albums',

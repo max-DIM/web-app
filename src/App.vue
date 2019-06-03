@@ -35,6 +35,7 @@ body {
   z-index: 0;
 }
 #footer {
+  margin-top: 20px;
   font-size: 12px;
   left: 0;
   right: 0;
