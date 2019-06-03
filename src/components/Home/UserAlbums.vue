@@ -54,12 +54,11 @@ li {
 }
 
 li:hover {
-  background: #eee;
+  background: rgba(0,0,0,0.04);
   cursor: pointer;
 }
 h2 {
-  background: #34495e;
-  color: white;
+  background: rgba(0,0,0,0.04);
 }
 @media (max-width: 749px) {
   li {

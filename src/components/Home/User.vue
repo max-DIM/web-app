@@ -111,7 +111,7 @@ export default {
   margin-top: 0;
 }
 .banner {
-  background: rgba(52, 73, 94, .3);
+  background: rgba(0,0,0,0.04);
   width: 100%;
   height: 170px;
 }
