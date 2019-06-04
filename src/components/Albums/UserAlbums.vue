@@ -2,12 +2,12 @@
   <div>
     <div>
       <h2>My Albums</h2>
-      <ul>
-        <li :key="index" v-for="(album, index) in albums" v-on:click="go(album.id, index)">
+      <div class="container-albums-user">
+        <div :key="index" v-for="(album, index) in albums" v-on:click="go(album.id, index)" class="albums">
           <h3>Album n°{{index + 1}}</h3>
           <p>{{album.title}}</p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,29 +39,22 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
+.container-albums-user {
 }
-
-li {
-  overflow: auto;
+.albums {
   transition: all .3s;
+  display: inline-block;
+  width: 50%;
 }
-
-li:hover {
-  background: rgba(0,0,0,0.04);
+.albums:hover {
+  background: rgba(0,0,0,0.1);
   cursor: pointer;
 }
 h2 {
   background: rgba(0,0,0,0.04);
 }
 @media (max-width: 749px) {
-  li {
+  .albums {
     width: 100%;
   }
 }

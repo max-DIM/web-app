@@ -1,7 +1,7 @@
 <template>
   <div>
     <loader v-if="loading"></loader>
-    <h1>Picture List</h1>
+    <h1>Pictures List</h1>
     <div>
       <div
         :key="index"
