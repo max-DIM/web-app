@@ -1,5 +1,6 @@
 <template>
     <div>
+      <loader v-if="loading"></loader>
       <h1>{{photo.title}}</h1>
       <div class="infos">
         <div>
@@ -25,7 +26,7 @@
             <input id="title" type="text" name="title" placeholder="title of comment">
             <label for="comment">Comment</label>
             <input type="text" id="comment" placeholder="add a comment...">
-            <input type="submit" v-on:click="addComment()">
+            <input type="submit" v-on:click="addComment()" value="Envoyer">
           </div>
         </div>
       </div>
@@ -34,8 +35,12 @@
 
 <script>
 import axios from 'axios'
+import Loader from '@/components/Utils/Loader'
 export default {
   name: 'Picture',
+  components: {
+    Loader
+  },
   data: function () {
     return {
       picture: this.$router.history.current.params.pictureid,
@@ -54,7 +59,8 @@ export default {
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
       ],
-      userid: this.$router.history.current.params.userid
+      userid: this.$router.history.current.params.userid,
+      loading: true
     }
   },
   mounted () {
@@ -67,6 +73,7 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/comments?postId=' + this.picture)
       .then(r => (this.comments = r.data))
+      .then(r => this.stopLoader())
   },
   methods: {
     t: function () {
@@ -86,6 +93,9 @@ export default {
       comment.value = ''
       this.comments.push(obj)
       window.scrollTo(0, document.body.scrollHeight)
+    },
+    stopLoader: function () {
+      this.loading = false
     }
   }
 }
