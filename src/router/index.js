@@ -46,6 +46,11 @@ export default new Router({
       path: '/maps',
       name: 'Maps',
       component: Maps
+    },
+    {
+      path: '/pictures/picture/:pictureid/',
+      name: 'Picture',
+      component: Picture
     }
   ]
 })

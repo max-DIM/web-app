@@ -58,15 +58,17 @@ export default {
       this.loading = false
     },
     showPicture: function (id) {
-      this.$router.push('picture/' + id)
+      this.$router.push(`pictures/picture/${id}`)
     },
     seeMore: function () {
+      this.loading = true
       this.start = this.end
       this.end = this.end + 50
       let page = this.obj.slice(this.start, this.end)
       for (let i = 0; i < 50; i++) {
         this.photos.push(page[i])
       }
+      this.loading = false
     }
   }
 }

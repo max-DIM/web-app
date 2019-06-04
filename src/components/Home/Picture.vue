@@ -68,12 +68,31 @@ export default {
       .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
       .then(r => (this.photo = r.data))
     axios
-      .get('https://jsonplaceholder.typicode.com/users/' + this.userid)
-      .then(r => (this.user = r.data))
-    axios
       .get('https://jsonplaceholder.typicode.com/comments?postId=' + this.picture)
       .then(r => (this.comments = r.data))
-      .then(r => this.stopLoader())
+    if (this.userid === undefined) {
+      axios
+        .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
+        .then(r => {
+          axios
+            .get('https://jsonplaceholder.typicode.com/albums/' + r.data.albumId)
+            .then(r => {
+              console.log(r.data)
+              axios
+                .get('https://jsonplaceholder.typicode.com/users/' + r.data.userId)
+                .then(r => {
+                  (this.user = r.data)
+                  this.userid = r.data.id
+                })
+                .then(r => this.stopLoader())
+            })
+        })
+    } else {
+      axios
+        .get('https://jsonplaceholder.typicode.com/users/' + this.userid)
+        .then(r => (this.user = r.data))
+        .then(r => this.stopLoader())
+    }
   },
   methods: {
     t: function () {
