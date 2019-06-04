@@ -5,8 +5,8 @@ import User from '@/components/Home/User'
 import Albums from '@/components/Albums/Albums'
 import Pictures from '@/components/Pictures/Pictures'
 import Maps from '@/components/Maps/Maps'
-import Album from '@/components/Home/Album'
-import Picture from '@/components/Home/Picture'
+import Album from '@/components/Albums/Album'
+import Picture from '@/components/Pictures/Picture'
 
 Vue.use(Router)
 
