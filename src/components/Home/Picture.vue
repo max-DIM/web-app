@@ -12,9 +12,20 @@
       <img v-bind:src="photo.url" :alt="photo.title">
       <div class="posts">
         <div class="comments">
-
+          <div :key="index" v-if="comments" v-for="(comment, index) in comments" class="old-comments">
+            <h3>{{comment.email}}</h3>
+            <h4>Title : {{comment.name}}</h4>
+            <p>Comment : {{comment.body}}</p>
+            <hr>
+          </div>
           <div class="add">
-            <input type="text" placeholder="add a comment...">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" placeholder="your email">
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title" placeholder="title of comment">
+            <label for="comment">Comment</label>
+            <input type="text" id="comment" placeholder="add a comment...">
+            <input type="submit" v-on:click="addComment()">
           </div>
         </div>
       </div>
@@ -30,6 +41,7 @@ export default {
       picture: this.$router.history.current.params.pictureid,
       photo: {},
       user: {},
+      comments: null,
       image: [
         require('@/assets/photos/1.png'),
         require('@/assets/photos/2.png'),
@@ -52,10 +64,28 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.userid)
       .then(r => (this.user = r.data))
+    axios
+      .get('https://jsonplaceholder.typicode.com/comments?postId=' + this.picture)
+      .then(r => (this.comments = r.data))
   },
   methods: {
     t: function () {
       console.log('load')
+    },
+    addComment: function () {
+      let email = document.querySelector('#email')
+      let title = document.querySelector('#title')
+      let comment = document.querySelector('#comment')
+      let obj = {
+        email: email.value,
+        name: title.value,
+        body: comment.value
+      }
+      email.value = ''
+      title.value = ''
+      comment.value = ''
+      this.comments.push(obj)
+      window.scrollTo(0, document.body.scrollHeight)
     }
   }
 }
@@ -77,25 +107,52 @@ img {
 }
 .posts, .infos {
   max-width: 600px;
-  height: 16px;
   background: rgba(0,0,0,0.04);
   margin: auto;
+}
+.posts {
+  margin-top: -6px;
 }
 .infos {
   height: calc(16px * 2 + 27.5px);
 }
-.posts {
-  margin-top: -6px;
-  height: 40px;
-}
 .add {
   padding: 5px;
-  height: 30px;
+}
+.add label {
+  text-align: left;
+  display: block;
 }
 .add input {
-  height: 100%;
-  border: none;
   width: 100%;
+  height: 30px;
+  border: none;
+  margin: 0 0 10px;
   background: transparent;
+}
+.add input[type="submit"]{
+  cursor: pointer;
+  border-radius: 20px;
+}
+.add input[type="submit"]:hover {
+  background: rgba(0,0,0,0.2);
+}
+.comments p {
+  margin: 0;
+}
+.old-comments {
+  text-align: left;
+}
+.old-comments h4 {
+  margin: 2px;
+}
+.old-comments h3:first-child {
+  margin-top: 0;
+  padding-top: 1em;
+}
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
 </style>
