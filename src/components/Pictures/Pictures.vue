@@ -18,7 +18,7 @@
       </div>
       <div>
         <progress :max="Object.keys(obj).length" :value="end"></progress>
-        <p>you saw {{end}} articles out of {{Object.keys(obj).length}}</p>
+        <p>you saw {{end}} pictures out of {{Object.keys(obj).length}}</p>
         <button class="see-more" v-on:click="seeMore()">
           SEE MORE
         </button>
