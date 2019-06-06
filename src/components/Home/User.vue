@@ -92,9 +92,6 @@ export default {
     }
   },
   methods: {
-    stopLoader: function () {
-      this.loading = false
-    }
   },
   beforeCreate () {
   },
@@ -115,6 +112,7 @@ export default {
     this.loading = false
   },
   beforeDestroy () {
+    this.loading = true
   },
   destroyed () {
   }

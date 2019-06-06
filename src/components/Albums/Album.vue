@@ -49,9 +49,6 @@ export default {
     }
   },
   methods: {
-    stopLoader: function () {
-      this.loading = false
-    },
     showPicture: function (id) {
       this.$router.push('picture/' + id)
     }
@@ -75,9 +72,10 @@ export default {
   beforeUpdate () {
   },
   updated () {
-    this.stopLoader()
+    this.loading = false
   },
   beforeDestroy () {
+    this.loading = true
   },
   destroyed () {
   }

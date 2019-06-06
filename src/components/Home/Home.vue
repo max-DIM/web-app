@@ -61,9 +61,6 @@ export default {
   methods: {
     viewProfile: function (id) {
       this.$router.push(`user/${id}`)
-    },
-    stopLoader: function () {
-      this.loading = false
     }
   },
   beforeCreate () {
@@ -85,6 +82,7 @@ export default {
     this.loading = false
   },
   beforeDestroy () {
+    this.loading = true
   },
   destroyed () {
   }

@@ -87,9 +87,6 @@ export default {
       comment.value = ''
       this.comments.push(obj)
       window.scrollTo(0, document.body.scrollHeight)
-    },
-    stopLoader: function () {
-      this.loading = false
     }
   },
   beforeCreate () {
@@ -134,6 +131,7 @@ export default {
     this.loading = false
   },
   beforeDestroy () {
+    this.loading = true
   },
   destroyed () {
   }

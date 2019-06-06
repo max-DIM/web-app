@@ -43,6 +43,7 @@ export default {
     this.loading = false
   },
   beforeDestroy () {
+    this.loading = true
   },
   destroyed () {
   }
