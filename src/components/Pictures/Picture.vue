@@ -36,10 +36,19 @@
 <script>
 import axios from 'axios'
 import Loader from '@/components/Utils/Loader'
+
 export default {
   name: 'Picture',
   components: {
     Loader
+  },
+  props: {
+  },
+  watch: {
+  },
+  computed: {
+  },
+  replace: {
   },
   data: function () {
     return {
@@ -63,7 +72,40 @@ export default {
       loading: true
     }
   },
+  methods: {
+    addComment: function () {
+      let email = document.querySelector('#email')
+      let title = document.querySelector('#title')
+      let comment = document.querySelector('#comment')
+      let obj = {
+        email: email.value,
+        name: title.value,
+        body: comment.value
+      }
+      email.value = ''
+      title.value = ''
+      comment.value = ''
+      this.comments.push(obj)
+      window.scrollTo(0, document.body.scrollHeight)
+    },
+    stopLoader: function () {
+      this.loading = false
+    }
+  },
+  beforeCreate () {
+    console.log('beforeCreate')
+  },
+  created () {
+    console.log('created')
+  },
+  compile () {
+    console.log('compile')
+  },
+  beforeMount () {
+    console.log('beforeMount')
+  },
   mounted () {
+    console.log('mounted')
     axios
       .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
       .then(r => (this.photo = r.data))
@@ -94,28 +136,17 @@ export default {
         .then(r => this.stopLoader())
     }
   },
-  methods: {
-    t: function () {
-      console.log('load')
-    },
-    addComment: function () {
-      let email = document.querySelector('#email')
-      let title = document.querySelector('#title')
-      let comment = document.querySelector('#comment')
-      let obj = {
-        email: email.value,
-        name: title.value,
-        body: comment.value
-      }
-      email.value = ''
-      title.value = ''
-      comment.value = ''
-      this.comments.push(obj)
-      window.scrollTo(0, document.body.scrollHeight)
-    },
-    stopLoader: function () {
-      this.loading = false
-    }
+  beforeUpdate () {
+    console.log('beforeUpdate')
+  },
+  updated () {
+    console.log('updated')
+  },
+  beforeDestroy () {
+    console.log('beforeDestroy')
+  },
+  destroyed () {
+    console.log('destroyed')
   }
 }
 </script>
