@@ -30,10 +30,19 @@
 <script>
 import axios from 'axios'
 import Loader from '@/components/Utils/Loader'
+
 export default {
   name: 'Pictures',
   components: {
     Loader
+  },
+  props: {
+  },
+  watch: {
+  },
+  computed: {
+  },
+  replace: {
   },
   data: function () {
     return {
@@ -43,17 +52,6 @@ export default {
       loading: true,
       obj: {}
     }
-  },
-  mounted () {
-    axios
-      .get('https://jsonplaceholder.typicode.com/photos')
-      .then(r => {
-        let jsonData = r.data
-        let shuffleData = this.shuffle(jsonData)
-        this.photos = shuffleData.slice(this.start, this.end)
-        this.obj = shuffleData
-      })
-      .then(r => this.stopLoader())
   },
   methods: {
     stopLoader: function () {
@@ -81,6 +79,42 @@ export default {
       }
       return data
     }
+  },
+  beforeCreate () {
+    console.log('beforeCreate')
+  },
+  created () {
+    console.log('created')
+  },
+  compile () {
+    console.log('compile')
+  },
+  beforeMount () {
+    console.log('beforeMount')
+  },
+  mounted () {
+    console.log('mounted')
+    axios
+      .get('https://jsonplaceholder.typicode.com/photos')
+      .then(r => {
+        let jsonData = r.data
+        let shuffleData = this.shuffle(jsonData)
+        this.photos = shuffleData.slice(this.start, this.end)
+        this.obj = shuffleData
+      })
+      .then(r => this.stopLoader())
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate')
+  },
+  updated () {
+    console.log('updated')
+  },
+  beforeDestroy () {
+    console.log('beforeDestroy')
+  },
+  destroyed () {
+    console.log('destroyed')
   }
 }
 </script>
