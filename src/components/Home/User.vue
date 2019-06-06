@@ -35,6 +35,7 @@ import axios from 'axios'
 import Loader from '@/components/Utils/Loader'
 import Map from '@/components/Maps/Map'
 import UserAlbums from '@/components/Albums/UserAlbums'
+
 export default {
   name: 'User',
   components: {
@@ -42,7 +43,15 @@ export default {
     Map,
     UserAlbums
   },
-  data () {
+  props: {
+  },
+  watch: {
+  },
+  computed: {
+  },
+  replace: {
+  },
+  data: function () {
     return {
       user: {
         'id': null,
@@ -87,11 +96,36 @@ export default {
       this.loading = false
     }
   },
+  beforeCreate () {
+    console.log('beforeCreate')
+  },
+  created () {
+    console.log('created')
+  },
+  compile () {
+    console.log('compile')
+  },
+  beforeMount () {
+    console.log('beforeMount')
+  },
   mounted () {
+    console.log('mounted')
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.$router.history.current.params.id)
       .then(response => (this.user = response.data))
       .then(response => this.stopLoader())
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate')
+  },
+  updated () {
+    console.log('updated')
+  },
+  beforeDestroy () {
+    console.log('beforeDestroy')
+  },
+  destroyed () {
+    console.log('destroyed')
   }
 }
 </script>
