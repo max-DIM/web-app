@@ -17,12 +17,23 @@
 </template>
 
 <script>
-// eslint-disable-next-line standard/object-curly-even-spacing
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet'
+
 export default {
   name: 'Map',
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker
+  },
   props: {
     user: Object
+  },
+  watch: {
+  },
+  computed: {
+  },
+  replace: {
   },
   data: function () {
     return {
@@ -35,16 +46,38 @@ export default {
       marker: L.latLng(47.413220, -1.219482)
     }
   },
-  components: {
-    LMap,
-    LTileLayer,
-    LMarker
-  },
   methods: {
     latLng: function (lat, lng) {
       // eslint-disable-next-line no-undef
       return L.latLng(lat, lng)
     }
+  },
+  beforeCreate () {
+    console.log('beforeCreate')
+  },
+  created () {
+    console.log('created')
+  },
+  compile () {
+    console.log('compile')
+  },
+  beforeMount () {
+    console.log('beforeMount')
+  },
+  mounted () {
+    console.log('mounted')
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate')
+  },
+  updated () {
+    console.log('updated')
+  },
+  beforeDestroy () {
+    console.log('beforeDestroy')
+  },
+  destroyed () {
+    console.log('destroyed')
   }
 }
 </script>
