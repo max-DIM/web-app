@@ -35,8 +35,6 @@ export default {
   },
   computed: {
   },
-  el: {
-  },
   replace: {
   },
   data: function () {
