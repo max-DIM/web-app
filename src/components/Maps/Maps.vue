@@ -28,32 +28,23 @@ export default {
   methods: {
   },
   beforeCreate () {
-    console.log('beforeCreate')
   },
   created () {
-    console.log('created')
   },
   compile () {
-    console.log('compile')
   },
   beforeMount () {
-    console.log('beforeMount')
   },
   mounted () {
-    console.log('mounted')
   },
   beforeUpdate () {
-    console.log('beforeUpdate')
   },
   updated () {
-    console.log('updated')
     this.loading = false
   },
   beforeDestroy () {
-    console.log('beforeDestroy')
   },
   destroyed () {
-    console.log('destroyed')
   }
 }
 </script>

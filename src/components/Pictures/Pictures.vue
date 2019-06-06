@@ -81,19 +81,14 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('beforeCreate')
   },
   created () {
-    console.log('created')
   },
   compile () {
-    console.log('compile')
   },
   beforeMount () {
-    console.log('beforeMount')
   },
   mounted () {
-    console.log('mounted')
     axios
       .get('https://jsonplaceholder.typicode.com/photos')
       .then(r => {
@@ -104,17 +99,13 @@ export default {
       })
   },
   beforeUpdate () {
-    console.log('beforeUpdate')
   },
   updated () {
-    console.log('updated')
     this.loading = false
   },
   beforeDestroy () {
-    console.log('beforeDestroy')
   },
   destroyed () {
-    console.log('destroyed')
   }
 }
 </script>

@@ -40,34 +40,25 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('beforeCreate')
   },
   created () {
-    console.log('created')
   },
   compile () {
-    console.log('compile')
   },
   beforeMount () {
-    console.log('beforeMount')
   },
   mounted () {
-    console.log('mounted')
     axios
       .get('https://jsonplaceholder.typicode.com/albums?userId=' + this.$router.history.current.params.id)
       .then(response => (this.albums = response.data))
   },
   beforeUpdate () {
-    console.log('beforeUpdate')
   },
   updated () {
-    console.log('updated')
   },
   beforeDestroy () {
-    console.log('beforeDestroy')
   },
   destroyed () {
-    console.log('destroyed')
   }
 }
 </script>

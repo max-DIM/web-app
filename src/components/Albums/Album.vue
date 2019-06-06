@@ -57,19 +57,14 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('beforeCreate')
   },
   created () {
-    console.log('created')
   },
   compile () {
-    console.log('compile')
   },
   beforeMount () {
-    console.log('beforeMount')
   },
   mounted () {
-    console.log('mounted')
     axios
       .get('https://jsonplaceholder.typicode.com/albums/' + this.albumid)
       .then(response => (this.album = response.data))
@@ -78,17 +73,13 @@ export default {
       .then(r => (this.pictures = r.data))
   },
   beforeUpdate () {
-    console.log('beforeUpdate')
   },
   updated () {
-    console.log('updated')
     this.stopLoader()
   },
   beforeDestroy () {
-    console.log('beforeDestroy')
   },
   destroyed () {
-    console.log('destroyed')
   }
 }
 </script>
