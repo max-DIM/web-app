@@ -48,8 +48,10 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/photos')
       .then(r => {
-        this.photos = r.data.slice(this.start, this.end)
-        this.obj = r.data
+        let jsonData = r.data
+        let shuffleData = this.shuffle(jsonData)
+        this.photos = shuffleData.slice(this.start, this.end)
+        this.obj = shuffleData
       })
       .then(r => this.stopLoader())
   },
@@ -69,6 +71,15 @@ export default {
         this.photos.push(page[i])
       }
       this.loading = false
+    },
+    shuffle: function (data) {
+      for (let i = 0; i < data.length - 1; i++) {
+        let j = i + Math.floor(Math.random() * (data.length - i))
+        let temp = data[j]
+        data[j] = data[i]
+        data[i] = temp
+      }
+      return data
     }
   }
 }
