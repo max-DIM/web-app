@@ -36,8 +36,9 @@ export default {
   },
   methods: {
     go: function (id, index) {
-      // index++
-      // this.$router.push(`${this.$router.history.current.params.id}/album/${index}/${id}/`)
+      index++
+      this.$router.push(`albums/album/${index}/${id}/`)
+      console.log(this.$router)
     }
   },
   beforeCreate () {

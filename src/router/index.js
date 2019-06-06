@@ -23,7 +23,8 @@ export default new Router({
       component: User
     },
     {
-      path: '/user/:userid/album/:index/:albumid',
+      // path: ['/user/:userid/album/:index/:albumid', '/albums/album/:index/:albumid/'],
+      path: '/albums/album/:index/:albumid/',
       name: 'userAlbumView',
       component: Album
     },
@@ -51,6 +52,10 @@ export default new Router({
       path: '/pictures/picture/:pictureid/',
       name: 'Picture',
       component: Picture
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
