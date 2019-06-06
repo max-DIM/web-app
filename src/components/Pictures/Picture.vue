@@ -126,14 +126,12 @@ export default {
                   (this.user = r.data)
                   this.userid = r.data.id
                 })
-                .then(r => this.stopLoader())
             })
         })
     } else {
       axios
         .get('https://jsonplaceholder.typicode.com/users/' + this.userid)
         .then(r => (this.user = r.data))
-        .then(r => this.stopLoader())
     }
   },
   beforeUpdate () {
@@ -141,6 +139,7 @@ export default {
   },
   updated () {
     console.log('updated')
+    this.loading = false
   },
   beforeDestroy () {
     console.log('beforeDestroy')

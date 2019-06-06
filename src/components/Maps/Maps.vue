@@ -1,11 +1,16 @@
 <template>
-  <div>vue maps</div>
+  <div>
+    <p>vue maps</p>
+  </div>
 </template>
 
 <script>
+import Loader from '@/components/Utils/Loader'
+
 export default {
   name: 'Maps',
   components: {
+    Loader
   },
   props: {
   },
@@ -17,6 +22,7 @@ export default {
   },
   data: function () {
     return {
+      loading: true
     }
   },
   methods: {
@@ -41,6 +47,7 @@ export default {
   },
   updated () {
     console.log('updated')
+    this.loading = false
   },
   beforeDestroy () {
     console.log('beforeDestroy')

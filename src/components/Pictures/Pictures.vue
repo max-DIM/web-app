@@ -102,13 +102,13 @@ export default {
         this.photos = shuffleData.slice(this.start, this.end)
         this.obj = shuffleData
       })
-      .then(r => this.stopLoader())
   },
   beforeUpdate () {
     console.log('beforeUpdate')
   },
   updated () {
     console.log('updated')
+    this.loading = false
   },
   beforeDestroy () {
     console.log('beforeDestroy')

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loader v-if="loading"></loader>
     <h1>Albums List</h1>
     <div class="container-albums-user">
       <div :key="index" v-for="(album, index) in albums" v-on:click="go(album.id, index)" class="albums">
@@ -12,10 +13,12 @@
 
 <script>
 import axios from 'axios'
+import Loader from '@/components/Utils/Loader'
 
 export default {
   name: 'Albums',
   components: {
+    Loader
   },
   props: {
   },
@@ -27,7 +30,8 @@ export default {
   },
   data: function () {
     return {
-      albums: null
+      albums: null,
+      loading: true
     }
   },
   methods: {
@@ -59,6 +63,7 @@ export default {
   },
   updated () {
     console.log('updated')
+    this.loading = false
   },
   beforeDestroy () {
     console.log('beforeDestroy')

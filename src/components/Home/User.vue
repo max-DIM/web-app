@@ -113,13 +113,13 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/users/' + this.$router.history.current.params.id)
       .then(response => (this.user = response.data))
-      .then(response => this.stopLoader())
   },
   beforeUpdate () {
     console.log('beforeUpdate')
   },
   updated () {
     console.log('updated')
+    this.loading = false
   },
   beforeDestroy () {
     console.log('beforeDestroy')

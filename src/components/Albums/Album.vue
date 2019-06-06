@@ -76,13 +76,13 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/photos?albumId=' + this.albumid)
       .then(r => (this.pictures = r.data))
-      .then(response => this.stopLoader())
   },
   beforeUpdate () {
     console.log('beforeUpdate')
   },
   updated () {
     console.log('updated')
+    this.stopLoader()
   },
   beforeDestroy () {
     console.log('beforeDestroy')
