@@ -32,7 +32,8 @@ export default {
     return {
       loading: true,
       users: {},
-      coordinates: []
+      coordinates: [],
+      get: false
     }
   },
   methods: {
@@ -50,6 +51,8 @@ export default {
         longitude: meanLng
       }
       return obj
+    },
+    mouseoverMarker: function (id) {
     },
     map: function (users) {
       for (let i = 0; i < users.length; i++) {
@@ -70,8 +73,12 @@ export default {
         }).addTo(map)
       for (let i = 0; i < users.length; i++) {
         let markerUser = [parseFloat(users[i].address.geo.lat), parseFloat(users[i].address.geo.lng)]
+        let message = users[i].name + ' is located here !<br>Click on the marker to go to the profile'
         // eslint-disable-next-line no-undef
-        L.marker(markerUser).addTo(map)
+        L.marker(markerUser).addTo(map).bindTooltip(message, { permanent: false }).on('click', () => {
+          this.$router.push(`/user/${users[i].id}`)
+        })
+        // L.marker(markerUser).addTo(map).on('mouseover', this.mouseoverMarker(users[i].id))
       }
     }
   },
@@ -89,15 +96,17 @@ export default {
       .then(r => {
         this.users = r.data
         this.map(this.users)
+        this.get = true
       })
   },
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.get === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }
