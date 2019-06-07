@@ -52,7 +52,7 @@ export default {
   },
   data: function () {
     return {
-      picture: this.$router.history.current.params.pictureid,
+      picture: this.$router.history.current.params.id,
       photo: {},
       user: {},
       comments: null,
@@ -68,7 +68,6 @@ export default {
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
       ],
-      userid: this.$router.history.current.params.userid,
       loading: true
     }
   },
@@ -86,7 +85,6 @@ export default {
       title.value = ''
       comment.value = ''
       this.comments.push(obj)
-      window.scrollTo(0, document.body.scrollHeight)
     }
   },
   beforeCreate () {
@@ -104,26 +102,20 @@ export default {
     axios
       .get('https://jsonplaceholder.typicode.com/comments?postId=' + this.picture)
       .then(r => (this.comments = r.data))
-    if (this.userid === undefined) {
-      axios
-        .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
-        .then(r => {
-          axios
-            .get('https://jsonplaceholder.typicode.com/albums/' + r.data.albumId)
-            .then(r => {
-              axios
-                .get('https://jsonplaceholder.typicode.com/users/' + r.data.userId)
-                .then(r => {
-                  (this.user = r.data)
-                  this.userid = r.data.id
-                })
-            })
-        })
-    } else {
-      axios
-        .get('https://jsonplaceholder.typicode.com/users/' + this.userid)
-        .then(r => (this.user = r.data))
-    }
+    axios
+      .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
+      .then(r => {
+        axios
+          .get('https://jsonplaceholder.typicode.com/albums/' + r.data.albumId)
+          .then(r => {
+            axios
+              .get('https://jsonplaceholder.typicode.com/users/' + r.data.userId)
+              .then(r => {
+                (this.user = r.data)
+                this.userid = r.data.id
+              })
+          })
+      })
   },
   beforeUpdate () {
   },

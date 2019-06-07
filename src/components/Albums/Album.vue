@@ -1,7 +1,7 @@
 <template>
   <div>
     <loader v-if="loading"></loader>
-    <h1>Album n°{{this.thisindex}} : {{album.title}}</h1>
+    <h1>Album n°{{this.index}} : {{album.title}}</h1>
     <div>
       <div
         :key="index"
@@ -43,14 +43,13 @@ export default {
       pictures: {},
       loading: true,
       title: null,
-      albumid: this.$router.history.current.params.albumid,
-      userid: this.$router.history.current.params.userid,
-      thisindex: this.$router.history.current.params.index
+      id: this.$router.history.current.params.id,
+      index: this.$router.history.current.params.index
     }
   },
   methods: {
     showPicture: function (id) {
-      this.$router.push('picture/' + id)
+      this.$router.push('/picture/' + id)
     }
   },
   beforeCreate () {
@@ -63,10 +62,10 @@ export default {
   },
   mounted () {
     axios
-      .get('https://jsonplaceholder.typicode.com/albums/' + this.albumid)
+      .get('https://jsonplaceholder.typicode.com/albums/' + this.id)
       .then(response => (this.album = response.data))
     axios
-      .get('https://jsonplaceholder.typicode.com/photos?albumId=' + this.albumid)
+      .get('https://jsonplaceholder.typicode.com/photos?albumId=' + this.id)
       .then(r => (this.pictures = r.data))
   },
   beforeUpdate () {

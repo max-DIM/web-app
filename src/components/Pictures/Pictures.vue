@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     showPicture: function (id) {
-      this.$router.push(`pictures/picture/${id}`)
+      this.$router.push(`/picture/${id}`)
     },
     seeMore: function () {
       this.loading = true

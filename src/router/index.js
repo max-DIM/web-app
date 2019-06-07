@@ -5,7 +5,7 @@ import User from '@/components/Home/User'
 import Albums from '@/components/Albums/Albums'
 import Pictures from '@/components/Pictures/Pictures'
 import Maps from '@/components/Maps/Maps'
-import Album from '@/components/Albums/Album'
+import Album from '@/components/Albums/Album.vue'
 import Picture from '@/components/Pictures/Picture'
 
 Vue.use(Router)
@@ -19,24 +19,18 @@ export default new Router({
     },
     {
       path: '/user/:id',
-      name: 'User',
+      name: 'Home -> User',
       component: User
     },
     {
-      // path: ['/user/:userid/album/:index/:albumid', '/albums/album/:index/:albumid/'],
-      path: '/albums/album/:index/:albumid/',
-      name: 'userAlbumView',
+      path: '/album/:index/:id',
+      name: 'Home -> User -> Album & Albums -> Album',
       component: Album
     },
     {
-      path: '/user/:userid/album/:index/:albumid/picture/:pictureid/',
-      name: 'pictureAlbumView',
+      path: '/picture/:id',
+      name: 'Home -> User -> Album -> Picture & Pictures -> Picture',
       component: Picture
-    },
-    {
-      path: '/albums',
-      name: 'Albums',
-      component: Albums
     },
     {
       path: '/pictures',
@@ -44,14 +38,14 @@ export default new Router({
       component: Pictures
     },
     {
+      path: '/albums',
+      name: 'Albums',
+      component: Albums
+    },
+    {
       path: '/maps',
       name: 'Maps',
       component: Maps
-    },
-    {
-      path: '/pictures/picture/:pictureid/',
-      name: 'Picture',
-      component: Picture
     },
     {
       path: '*',
