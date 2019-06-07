@@ -119,7 +119,6 @@ export default {
     height: calc(100vh - 66px - 66px);
     position: absolute;
     width: 100%;
-    background: red;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
