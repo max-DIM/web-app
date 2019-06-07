@@ -68,7 +68,9 @@ export default {
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
       ],
-      loading: true
+      loading: true,
+      getUser: false,
+      getComments: false
     }
   },
   methods: {
@@ -97,14 +99,15 @@ export default {
   },
   mounted () {
     axios
-      .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
-      .then(r => (this.photo = r.data))
-    axios
       .get('https://jsonplaceholder.typicode.com/comments?postId=' + this.picture)
-      .then(r => (this.comments = r.data))
+      .then(r => {
+        this.comments = r.data
+        this.getComments = true
+      })
     axios
       .get('https://jsonplaceholder.typicode.com/photos/' + this.picture)
       .then(r => {
+        this.photo = r.data
         axios
           .get('https://jsonplaceholder.typicode.com/albums/' + r.data.albumId)
           .then(r => {
@@ -113,6 +116,7 @@ export default {
               .then(r => {
                 (this.user = r.data)
                 this.userid = r.data.id
+                this.getUser = true
               })
           })
       })
@@ -120,10 +124,11 @@ export default {
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.getUser === true || this.getComments === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }

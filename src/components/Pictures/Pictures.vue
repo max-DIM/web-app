@@ -50,7 +50,8 @@ export default {
       start: 0,
       end: 50,
       loading: true,
-      obj: {}
+      obj: {},
+      get: false
     }
   },
   methods: {
@@ -93,15 +94,17 @@ export default {
         let shuffleData = this.shuffle(jsonData)
         this.photos = shuffleData.slice(this.start, this.end)
         this.obj = shuffleData
+        this.get = true
       })
   },
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.get === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }

@@ -44,7 +44,9 @@ export default {
       loading: true,
       title: null,
       id: this.$router.history.current.params.id,
-      index: this.$router.history.current.params.index
+      index: this.$router.history.current.params.index,
+      getAlbum: false,
+      getPictures: false
     }
   },
   methods: {
@@ -63,18 +65,25 @@ export default {
   mounted () {
     axios
       .get('https://jsonplaceholder.typicode.com/albums/' + this.id)
-      .then(response => (this.album = response.data))
+      .then(response => {
+        this.album = response.data
+        this.getAlbum = true
+      })
     axios
       .get('https://jsonplaceholder.typicode.com/photos?albumId=' + this.id)
-      .then(r => (this.pictures = r.data))
+      .then(r => {
+        this.pictures = r.data
+        this.getPictures = true
+      })
   },
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.getAlbum === true || this.getPictures === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }

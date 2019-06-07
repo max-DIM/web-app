@@ -31,7 +31,8 @@ export default {
   data: function () {
     return {
       albums: null,
-      loading: true
+      loading: true,
+      get: false
     }
   },
   methods: {
@@ -51,15 +52,19 @@ export default {
   mounted () {
     axios
       .get('https://jsonplaceholder.typicode.com/albums')
-      .then(response => (this.albums = response.data))
+      .then(response => {
+        this.albums = response.data
+        this.get = true
+      })
   },
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.get === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }

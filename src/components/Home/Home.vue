@@ -55,7 +55,8 @@ export default {
         require('@/assets/photos/9.png'),
         require('@/assets/photos/10.png')
       ],
-      loading: true
+      loading: true,
+      get: false
     }
   },
   methods: {
@@ -74,15 +75,19 @@ export default {
   mounted () {
     axios
       .get('https://jsonplaceholder.typicode.com/users')
-      .then(response => (this.users = response.data))
+      .then(response => {
+        this.users = response.data
+        this.get = true
+      })
   },
   beforeUpdate () {
   },
   updated () {
-    this.loading = false
+    if (this.get === true) {
+      this.loading = false
+    }
   },
   beforeDestroy () {
-    this.loading = true
   },
   destroyed () {
   }
