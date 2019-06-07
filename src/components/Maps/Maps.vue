@@ -52,8 +52,6 @@ export default {
       }
       return obj
     },
-    mouseoverMarker: function (id) {
-    },
     map: function (users) {
       for (let i = 0; i < users.length; i++) {
         let obj = {
