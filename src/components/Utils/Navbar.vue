@@ -4,7 +4,7 @@
       <i class="bars"></i>
     </div>
     <nav class="menu">
-      <a href="">Home</a>
+      <a v-on:click="go('/')">Home</a>
       <a v-on:click="go('/pictures')">Pictures</a>
       <a v-on:click="go('/albums')">Albums</a>
       <a v-on:click="go('/maps')">Maps</a>
