@@ -14,6 +14,9 @@ npm run dev
 # build for production with minification
 npm run build
 
+# serve production (dist file)
+serve -s dist
+
 # build for production and view the bundle analyzer report
 npm run build --report
 
