@@ -2,7 +2,7 @@
     <div>
       <loader v-if="loading"></loader>
       <h1>{{photo.title}}</h1>
-      <div class="infos">
+      <div class="infos" v-on:click="go('/user/' + userid)">
         <div>
           <img v-bind:src="image[userid - 1]" alt="profile photo">
         </div>
@@ -87,6 +87,9 @@ export default {
       title.value = ''
       comment.value = ''
       this.comments.push(obj)
+    },
+    go: function (e) {
+      this.$router.push(e)
     }
   },
   beforeCreate () {
@@ -148,6 +151,9 @@ img {
   float: left;
   padding-left: 10px;
   margin: 5px;
+}
+.infos * {
+  cursor: pointer;
 }
 .posts, .infos {
   max-width: 600px;
