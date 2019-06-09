@@ -39,6 +39,8 @@ export default {
       }
     },
     go: function (e) {
+      this.isActive = false
+      document.querySelector('.menu').classList.remove('show')
       this.$router.push(e)
     }
   },

@@ -9,7 +9,7 @@
       <div class="infos">
         <div class="left">
           <h1>{{ user.name }}</h1>
-          <h2>Alias <q>{{ user.username }}</q></h2>
+          <h2>Alias "{{ user.username }}"</h2>
           <p>Email : {{ user.email }}</p>
           <p>Phone : {{ user.phone }}</p>
           <p>Website : <span class="website">{{ user.website }}</span></p>
@@ -164,9 +164,11 @@ nav {
   width: 200px;
   height: auto;
   margin-left: 16px;
+  margin-right: 16px;
   padding: 0;
   position: absolute;
   transform: translateY(-70%);
+  max-width: 100%;
 }
 .picture img {
   max-width: 100%;
@@ -202,6 +204,26 @@ nav {
   }
   .right {
     margin: 0 0 5px 0;
+  }
+  /*.picture {*/
+  /*  width: 200px;*/
+  /*  height: auto;*/
+  /*  margin-left: 16px;*/
+  /*  margin-right: 16px;*/
+  /*  padding: 0;*/
+  /*  position: absolute;*/
+  /*  transform: translateY(-70%);*/
+  /*  max-width: 100%;*/
+  /*}*/
+  /*.picture img {*/
+  /*  max-width: 100%;*/
+  /*}*/
+  .picture {
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -70%);
+  }
+  .picture img {
   }
 }
 .website {
