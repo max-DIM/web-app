@@ -15,7 +15,7 @@ npm run dev
 npm run build
 
 # serve production (dist file)
-serve -s dist
+serve dist
 
 # build for production and view the bundle analyzer report
 npm run build --report
