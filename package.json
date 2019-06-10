@@ -16,7 +16,6 @@
   "dependencies": {
     "axios": "latest",
     "leaflet": "^1.5.1",
-    "serve": "^11.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue2-leaflet": "^2.1.1"
