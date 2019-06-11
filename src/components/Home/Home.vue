@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <loader v-if="loading"></loader>
     <h1>{{ msg }}</h1>
     <div class="users">
@@ -100,12 +100,19 @@ export default {
   margin: 0;
   padding: 0;
 }
+.home {
+  min-height: calc(100vh - 66px - 66px - 20px);
+}
 h1, h2 {
   font-weight: normal;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+h1 {
+  margin-top: 0;
+  padding-top: 0.67em; 
 }
 ul {
   list-style-type: none;
