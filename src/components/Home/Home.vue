@@ -111,7 +111,7 @@ h1, h2 {
 }
 h1 {
   margin-top: 0;
-  padding-top: 0.67em; 
+  padding-top: 0.67em;
 }
 ul {
   list-style-type: none;
