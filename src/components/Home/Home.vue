@@ -2,11 +2,10 @@
   <div class="home">
     <loader v-if="loading"></loader>
     <h1>{{ msg }}</h1>
-    <div class="users">
+    <div class="users" v-if="users !== null">
       <div class="user"
            v-for="user in users"
            :key="user.id"
-           v-if="users !== null"
       >
         <div class="background"></div>
         <div class="picture">
